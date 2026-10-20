@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#251d35">
+  <meta name="description" content="Một khu vườn anh đào nhỏ cất giữ những món quà và kỷ niệm của hai ta.">
+  <title>Dưới tán hoa anh đào</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+      }
+    }
+  </script>
+  <script src="js/config.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <main class="experience" id="experience">
+    <div class="scene-host" id="scene-host" aria-label="Khung cảnh khu vườn hoa anh đào 3D"></div>
+
+    <section class="fallback-scene" id="fallback-scene" aria-label="Khu vườn hoa anh đào">
+      <div class="fallback-moon"></div>
+      <div class="fallback-tree" aria-hidden="true"><span>✿</span><span>✿</span><span>✿</span><span>✿</span><span>✿</span><i></i></div>
+      <div class="fallback-bunny" aria-hidden="true">🐇</div>
+      <div class="fallback-ground"></div>
+      <p>Khung cảnh tĩnh đang được hiển thị vì thiết bị chưa tải được chế độ 3D.</p>
+    </section>
+
+    <header class="topbar">
+      <a class="brand" href="#experience" aria-label="Về đầu trang">
+        <span class="brand-mark" aria-hidden="true">✿</span>
+        <span><strong>Dưới tán anh đào</strong><small>Một góc nhỏ dành cho hai ta</small></span>
+      </a>
+      <button class="reset-button" id="reset-camera" type="button" aria-label="Đưa góc nhìn về ban đầu">
+        <span aria-hidden="true">↻</span><span class="reset-label">Góc nhìn ban đầu</span>
+      </button>
+    </header>
+
+    <div class="scene-hint" id="scene-hint">
+      <span class="hint-icon" aria-hidden="true">✧</span>
+      Kéo để xoay quanh cây <span class="hint-divider">·</span> Chạm vào một món quà
+    </div>
+
+    <nav class="gift-access" id="gift-access" aria-label="Mở các hộp quà"></nav>
+
+    <section class="photo-dialog" id="photo-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title" aria-hidden="true">
+      <button class="dialog-backdrop" type="button" data-close-dialog aria-label="Đóng khung ảnh"></button>
+      <div class="dialog-card" role="document">
+        <button class="dialog-close" type="button" data-close-dialog aria-label="Đóng">×</button>
+        <div class="dialog-heading">
+          <h1 id="dialog-title">MỘT ĐIỀU ĐẸP ĐƯỢC CẤT GIỮ</h1>
+        </div>
+        <div class="photo-grid" id="photo-grid"></div>
+        <p class="dialog-footnote">Những kỷ niệm này chỉ nằm trong khu vườn của chúng mình ♡</p>
+      </div>
+    </section>
+
+    <div class="fallback-gifts" id="fallback-gifts" aria-label="Mở hộp quà"></div>
+    <div class="screen-reader-only" id="gift-live" aria-live="polite"></div>
+    <div class="loading-note" id="loading-note" role="status">Đang gọi khu vườn về…</div>
+  </main>
+  <script>
+    window.setTimeout(() => {
+      if (!window.sakuraSceneReady && window.showSakuraFallback) window.showSakuraFallback();
+    }, 9000);
+  </script>
+</body>
+</html>
